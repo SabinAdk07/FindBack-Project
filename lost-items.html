@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Lost Item - FindBack</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>🔍 FindBack</h2>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="lost-items.html" class="active">Lost Items</a></li>
+                <li><a href="found-items.html">Found Items</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="index.html" id="authLink">Login/Signup</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <div class="page-icon">❌</div>
+                <h1>Report Lost Item</h1>
+                <p>Fill in the details below to report your lost item</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content-form">
+        <div class="container">
+            <div class="form-container">
+                <form id="lostItemForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="itemName">Item Name *</label>
+                        <input type="text" id="itemName" name="itemName" required 
+                               placeholder="e.g. iPhone 13 Pro, Blue Backpack">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Books">Books</option>
+                            <option value="ID Card">ID Card</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description *</label>
+                        <textarea id="description" name="description" rows="5" required
+                                  placeholder="Provide a detailed description of the item..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dateLost">Date Lost *</label>
+                            <input type="date" id="dateLost" name="dateLost" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Location *</label>
+                            <input type="text" id="location" name="location" required
+                                   placeholder="e.g. SR Block, Academic Block">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactPhone">Contact Phone</label>
+                        <input type="tel" id="contactPhone" name="contactPhone"
+                               placeholder="Optional contact number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">Upload Image</label>
+                        <div class="file-upload">
+                            <input type="file" id="image" name="image" accept="image/*">
+                            <label for="image" class="file-upload-label">
+                                <span id="fileName">Choose an image (optional)</span>
+                            </label>
+                        </div>
+                        <div id="imagePreview" class="image-preview"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            Submit Lost Item Report
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='index.html'">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Recent Lost Items -->
+            <div class="items-section">
+                <h2>Recent Lost Items</h2>
+                <div class="filters">
+                    <input type="text" id="searchBox" placeholder="Search items..." class="search-input">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="Books">Books</option>
+                        <option value="ID Card">ID Card</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Claimed">Claimed</option>
+                        <option value="Resolved">Resolved</option>
+                    </select>
+                </div>
+                <div id="lostItemsList" class="items-grid">
+                    <!-- Items will be loaded dynamically -->
+                    <div class="loading">Loading items...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Require authentication to access lost items page
+        if (!requireAuth()) {
+            // User will be redirected to login
+        }
+    </script>
+    <script src="js/lostItems.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+# .gitignore for Lost & Found System
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Upload Directory (ignore uploaded files but keep folder structure)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Build Output
+dist/
+build/
+out/
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+
+# Testing
+coverage/
+.nyc_output/
+
+# Debug
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Package Manager
+package-lock.json
+yarn.lock
+
+# MongoDB
+*.mongodb
+
+# Misc
+.cache
